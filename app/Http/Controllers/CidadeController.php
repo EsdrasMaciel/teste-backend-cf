@@ -24,7 +24,17 @@ class CidadeController extends Controller
     }
 
     function listarMedicos(Request $request, $id){
-        
+      $request->merge(['id' => $id]);
+      $rules=array(
+          "id" => 'required|exists:cidades,id',
+      );
+      $validator=Validator::make($request->all(),$rules);
+      if($validator->fails())
+      {
+          return response()->json([
+              'message' =>  $validator->errors()
+          ], 400);
+      }
       $medicos = Medico::where('cidade_id', $id)->get()->medicos
         ->makeHidden([
             'updated_at',
