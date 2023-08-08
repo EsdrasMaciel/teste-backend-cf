@@ -18,7 +18,7 @@
 $ git clone https://github.com/EsdrasMaciel/teste-backend-cf.git
 
 # Entre na pasta
-$ cd teste-backend-cf.git
+$ cd teste-backend-cf
 
 # Instale as dependências do laravel e node
 $ composer install
